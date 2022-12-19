@@ -1,4 +1,4 @@
-package com.touchsun.autumn.core.test.service;
+package com.touchsun.autumn.core.service;
 
 /**
  * 测试材料
