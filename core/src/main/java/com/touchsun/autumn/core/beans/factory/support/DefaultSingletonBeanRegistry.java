@@ -1,6 +1,6 @@
-package com.touchsun.autumn.core.factory.support;
+package com.touchsun.autumn.core.beans.factory.support;
 
-import com.touchsun.autumn.core.factory.config.SingletonBeanRegistry;
+import com.touchsun.autumn.core.beans.factory.config.SingletonBeanRegistry;
 
 import java.util.HashMap;
 import java.util.Map;

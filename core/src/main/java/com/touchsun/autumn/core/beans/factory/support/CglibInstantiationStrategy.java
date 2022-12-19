@@ -1,7 +1,7 @@
-package com.touchsun.autumn.core.factory.support;
+package com.touchsun.autumn.core.beans.factory.support;
 
-import com.touchsun.autumn.core.factory.config.BeanDefinition;
-import com.touchsun.autumn.exceptions.BeanException;
+import com.touchsun.autumn.core.beans.factory.config.BeanDefinition;
+import com.touchsun.autumn.core.beans.exceptions.BeansException;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 
@@ -14,7 +14,7 @@ import net.sf.cglib.proxy.MethodInterceptor;
 public class CglibInstantiationStrategy implements InstantiationStrategy {
     
     @Override
-    public Object instantiate(BeanDefinition beanDefinition) throws BeanException {
+    public Object instantiate(BeanDefinition beanDefinition) throws BeansException {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(beanDefinition.getBeanClass());
         enhancer.setCallback( (MethodInterceptor) (obj, method, argsTemp, proxy) -> proxy.invokeSuper(obj, argsTemp));

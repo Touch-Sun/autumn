@@ -1,6 +1,6 @@
-package com.touchsun.autumn.core.factory.support;
+package com.touchsun.autumn.core.beans.factory.support;
 
-import com.touchsun.autumn.core.factory.config.BeanDefinition;
+import com.touchsun.autumn.core.beans.factory.config.BeanDefinition;
 
 /**
  * Bean 定义注册表

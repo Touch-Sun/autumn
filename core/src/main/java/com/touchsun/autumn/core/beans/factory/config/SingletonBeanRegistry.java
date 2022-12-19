@@ -1,4 +1,4 @@
-package com.touchsun.autumn.core.factory.config;
+package com.touchsun.autumn.core.beans.factory.config;
 
 /**
  * 单例注册表

@@ -1,8 +1,8 @@
-package com.touchsun.autumn.core.factory.support;
+package com.touchsun.autumn.core.beans.factory.support;
 
 import cn.hutool.core.text.StrFormatter;
-import com.touchsun.autumn.core.factory.config.BeanDefinition;
-import com.touchsun.autumn.exceptions.BeanException;
+import com.touchsun.autumn.core.beans.factory.config.BeanDefinition;
+import com.touchsun.autumn.core.beans.exceptions.BeansException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,12 +22,12 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     private Map<String, BeanDefinition> beanDefinitionContainer = new HashMap<>();
     
     @Override
-    protected BeanDefinition getBeanDefinition(String beanName) throws BeanException {
+    protected BeanDefinition getBeanDefinition(String beanName) throws BeansException {
         // 尝试从容器内获取Bean定义
         BeanDefinition beanDefinition = beanDefinitionContainer.get(beanName);
         // 没有Bean定义则抛出Bean未定义异常
         if (beanDefinition == null) {
-            throw new BeanException(StrFormatter.format("名称为：{}的Bean没有被定义", beanName));
+            throw new BeansException(StrFormatter.format("名称为：{}的Bean没有被定义", beanName));
         }
         // 返回Bean定义
         return beanDefinition;

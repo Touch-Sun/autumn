@@ -1,8 +1,8 @@
-package com.touchsun.autumn.core.factory.support;
+package com.touchsun.autumn.core.beans.factory.support;
 
 import cn.hutool.core.text.StrFormatter;
-import com.touchsun.autumn.core.factory.config.BeanDefinition;
-import com.touchsun.autumn.exceptions.BeanException;
+import com.touchsun.autumn.core.beans.factory.config.BeanDefinition;
+import com.touchsun.autumn.core.beans.exceptions.BeansException;
 
 import java.lang.reflect.Constructor;
 
@@ -15,7 +15,7 @@ import java.lang.reflect.Constructor;
 public class SimpleInstantiationStrategy implements InstantiationStrategy {
     
     @Override
-    public Object instantiate(BeanDefinition beanDefinition) throws BeanException {
+    public Object instantiate(BeanDefinition beanDefinition) throws BeansException {
         // 获取Bean的类路径
         Class<?> beanClass = beanDefinition.getBeanClass();
         // 实例化
@@ -24,7 +24,7 @@ public class SimpleInstantiationStrategy implements InstantiationStrategy {
             Constructor<?> constructor = beanClass.getDeclaredConstructor();
             return constructor.newInstance();
         } catch (Exception e) {
-            throw new BeanException(StrFormatter.format("实例化Bean[{}]失败...", beanClass.getName()), e);
+            throw new BeansException(StrFormatter.format("实例化Bean[{}]失败...", beanClass.getName()), e);
         }
     }
 }

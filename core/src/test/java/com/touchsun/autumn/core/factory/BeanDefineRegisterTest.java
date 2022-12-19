@@ -1,8 +1,8 @@
 package com.touchsun.autumn.core.factory;
 
-import com.touchsun.autumn.core.factory.config.BeanDefinition;
-import com.touchsun.autumn.core.factory.support.CglibInstantiationStrategy;
-import com.touchsun.autumn.core.factory.support.DefaultListableBeanFactory;
+import com.touchsun.autumn.core.beans.factory.config.BeanDefinition;
+import com.touchsun.autumn.core.beans.factory.support.CglibInstantiationStrategy;
+import com.touchsun.autumn.core.beans.factory.support.DefaultListableBeanFactory;
 import com.touchsun.autumn.core.service.UserService;
 import org.junit.Test;
 
