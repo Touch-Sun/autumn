@@ -12,6 +12,12 @@ import com.touchsun.autumn.exceptions.BeanException;
  */
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
 
+    /**
+     * 实例化策略
+     * 默认简单策略
+     */
+    private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();
+
     @Override
     protected Object createBean(String beanName, BeanDefinition beanDefinition) {
         return doCreateBean(beanName, beanDefinition);
@@ -31,13 +37,26 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         Object bean;
         // 创建对象
         try {
-            bean = beanClass.newInstance();
+            // 根据策略进行实例化
+            bean = createBeanInstance(beanDefinition);
         } catch (Exception e) {
             throw new BeanException(StrFormatter.format("实例化Bean[{}]失败...", beanClass.getName()), e);
         }
         // 添加到单例Bean容器
         putSingletonBean(beanName, bean);
         return bean;
+    }
+    
+    protected Object createBeanInstance(BeanDefinition beanDefinition) {
+        return getInstantiationStrategy().instantiate(beanDefinition);
+    }
+
+    public InstantiationStrategy getInstantiationStrategy() {
+        return instantiationStrategy;
+    }
+
+    public void setInstantiationStrategy(InstantiationStrategy instantiationStrategy) {
+        this.instantiationStrategy = instantiationStrategy;
     }
 }
 

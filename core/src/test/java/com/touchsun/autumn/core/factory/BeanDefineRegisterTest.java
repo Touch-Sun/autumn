@@ -1,6 +1,7 @@
 package com.touchsun.autumn.core.factory;
 
 import com.touchsun.autumn.core.factory.config.BeanDefinition;
+import com.touchsun.autumn.core.factory.support.CglibInstantiationStrategy;
 import com.touchsun.autumn.core.factory.support.DefaultListableBeanFactory;
 import com.touchsun.autumn.core.service.UserService;
 import org.junit.Test;
@@ -21,6 +22,8 @@ public class BeanDefineRegisterTest {
         BeanDefinition beanDefinition = new BeanDefinition(UserService.class);
         // 注册Bean定义
         beanFactory.registerBeanDefinition("userService", beanDefinition);
+        // 设置Bean实例化策略
+        beanFactory.setInstantiationStrategy(new CglibInstantiationStrategy());
 
         for (int i = 0; i < 100; i++) {
             // 获取Bean并且执行方法
